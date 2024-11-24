@@ -1,10 +1,10 @@
 # Genesis-Stat-Tracker
 
 ## Requirements:
+- python
 - pathlib
 - requests
 - screen_ocr
-- multiprocessing
 - ahk
 - pywingui
 ## Instructions for use
