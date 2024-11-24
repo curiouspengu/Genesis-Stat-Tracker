@@ -14,16 +14,24 @@ last_user = ""
 
 ahk = AHK()
 def main_loop():
+    counter = 0
     ocr_reader = screen_ocr.Reader.create_reader(backend="easyocr")
     while True:
-        ahk.send("/")
         results = ocr_reader.read_screen(bounding_box=(16, 303, 778, 375))
         parse(results.as_string())
-        ahk.send("{BS}")
-        ahk.send("{BS}")
+        counter += 1
+        if counter >= 10:
+            ahk.send("/")
+            ahk.send("{BS}")
+            ahk.send("{BS}")
+            counter = 0
 
 def parse(result):
     try:
+        if "light" in result:
+            send_stats(result.split("devoured")[1].strip(), "Luminosity", "1,200,000,000")
+            return
+        
         result = result[result.find("["):]
         result = result.replace("[Global]: ", "")
         split = result.split("HAS FOUND")
@@ -34,12 +42,12 @@ def parse(result):
             return
         else:
             last_user = split[0]
-        for aura in globals:
-            if aura["check"] in split[1].lower():
-                send_stats(split[0], aura["name"], aura["rarity"])
-                break
     except:
-        print("fail")
+        print("parse fail")
+    for aura in globals:
+        if aura["check"] in split[1].lower():
+            send_stats(split[0], aura["name"], aura["rarity"])
+            break
 
 
 embeds = []
@@ -54,7 +62,8 @@ def send_stats(username, aura_name, roll_chance):
             "author" : {
                 "name": username
             },
-            "title": username + " has found " + aura_name
+            "title": username + " has found " + aura_name,
+            "color": webhook_color
         }
     )
     if len(embeds) >= embed_limit:

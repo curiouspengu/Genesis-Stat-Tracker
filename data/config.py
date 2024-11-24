@@ -1,6 +1,8 @@
 import sys
 sys.dont_write_bytecode = True
 webhook_url = ""
+webhook_color = 16729413
+
 globals = [
 {
     "name": "Chromatic: Genesis",
