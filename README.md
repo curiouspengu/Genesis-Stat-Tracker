@@ -6,7 +6,7 @@
 - requests
 - screen_ocr[easy_ocr]
 - ahk
-- pywingui
+- pywin32
 ## Instructions for use
 - You need a computer with the resolution 1920x1080 at 175% scale
 - Add your discord webhook to config.py
