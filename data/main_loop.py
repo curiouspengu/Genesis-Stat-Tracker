@@ -3,10 +3,10 @@ import screen_ocr
 import requests
 from data.config import *
 from ahk import AHK
-from data import window
 import datetime
+import sys
 
-
+sys.dont_write_bytecode = True
 running = False
 initialiazed = False
 main_process = None
@@ -27,23 +27,29 @@ def main_loop():
             counter = 0
 
 def parse(result):
-    try:
-        if "light" in result:
-            send_stats(result.split("devoured")[1].strip(), "Luminosity", "1,200,000,000")
-            return
-        
-        result = result[result.find("["):]
-        result = result.replace("[Global]: ", "")
-        split = result.split("HAS FOUND")
-        split[0] = split[0].strip()
-        split[1] = split[1].strip()
-        global last_user
-        if split[0] == last_user:
-            return
-        else:
-            last_user = split[0]
-    except:
-        print("parse fail")
+    # try:
+    if "lig" in result.lower():
+        send_stats(result.split("devoured")[1].strip(), "Luminosity", "1,200,000,000")
+        return
+    
+    
+    result = result[result.find("["):]
+    result = result.replace("[Global]: ", "")
+    if "tru" in result.lower() or "dis" in result.lower():
+        send_stats(result.split("has")[0].strip(), "Oblivion", "2,000 (from oblivion potion)")
+        return
+    
+    split = result.split("HAS FOUND")
+    split[0] = split[0].strip()
+    split[1] = split[1].strip()
+    global last_user
+    if split[0] == last_user:
+        return
+    else:
+        last_user = split[0]
+    # except:
+    #     print("parse fail")
+    #     return
     for aura in globals:
         if aura["check"] in split[1].lower():
             send_stats(split[0], aura["name"], aura["rarity"])
@@ -54,7 +60,8 @@ embeds = []
 
 
 def send_stats(username, aura_name, roll_chance):
-    embed_limit = 10
+    webhook_url = "https://discord.com/api/webhooks/1310067262249762926/Nehjc4FvdD8ceRSe1Nk90JP9v4ql4miJhIqF_YVCL4AOXDIcZQSI8R-GUE_5vvdFoCwD"
+    embed_limit = 1
     global embeds
     embeds.append(
         {
@@ -63,7 +70,7 @@ def send_stats(username, aura_name, roll_chance):
                 "name": username
             },
             "title": username + " has found " + aura_name,
-            "color": webhook_color
+            # "color": webhook_color
         }
     )
     if len(embeds) >= embed_limit:
@@ -83,7 +90,7 @@ def send_stats(username, aura_name, roll_chance):
             print("send error")
         else:
             pass
-        embeds.clear()
+        embeds.clear() 
 
 def start():
     global main_process
@@ -92,9 +99,6 @@ def start():
         return
     else:
         running = True
-        
-    if window.focus_roblox() == -1:
-        print("NO ROBLOX")
     
     main_process = multiprocessing.Process(target=main_loop)
     main_process.start()
