@@ -27,29 +27,29 @@ def main_loop():
             counter = 0
 
 def parse(result):
-    # try:
-    if "lig" in result.lower():
-        send_stats(result.split("devoured")[1].strip(), "Luminosity", "1,200,000,000")
+    try:
+        if "lig" in result.lower():
+            send_stats(result.split("devoured")[1].strip(), "Luminosity", "1,200,000,000")
+            return
+        
+        
+        result = result[result.find("["):]
+        result = result.replace("[Global]: ", "")
+        if "tru" in result.lower() or "dis" in result.lower():
+            send_stats(result.split("has")[0].strip(), "Oblivion", "2,000 (from oblivion potion)")
+            return
+        
+        split = result.split("HAS FOUND")
+        split[0] = split[0].strip()
+        split[1] = split[1].strip()
+        global last_user
+        if split[0] == last_user:
+            return
+        else:
+            last_user = split[0]
+    except:
+        print("parse fail")
         return
-    
-    
-    result = result[result.find("["):]
-    result = result.replace("[Global]: ", "")
-    if "tru" in result.lower() or "dis" in result.lower():
-        send_stats(result.split("has")[0].strip(), "Oblivion", "2,000 (from oblivion potion)")
-        return
-    
-    split = result.split("HAS FOUND")
-    split[0] = split[0].strip()
-    split[1] = split[1].strip()
-    global last_user
-    if split[0] == last_user:
-        return
-    else:
-        last_user = split[0]
-    # except:
-    #     print("parse fail")
-    #     return
     for aura in globals:
         if aura["check"] in split[1].lower():
             send_stats(split[0], aura["name"], aura["rarity"])
