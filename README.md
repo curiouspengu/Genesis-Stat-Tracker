@@ -4,7 +4,7 @@
 - python
 - pathlib
 - requests
-- screen_ocr
+- screen_ocr[easy_ocr]
 - ahk
 - pywingui
 ## Instructions for use
