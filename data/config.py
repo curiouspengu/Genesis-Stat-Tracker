@@ -1,6 +1,6 @@
 import sys
 sys.dont_write_bytecode = True
-webhook_url = "https://discord.com/api/webhooks/1310123141971836998/1WRpT97dF4UrPeeF0fp76FebjshlpLtvG9npt2wBgnCbiaGbUtfIQtwc3DH7lE3zaMUe"
+webhook_url = ""
 webhook_color = 16729413
 
 globals = [
