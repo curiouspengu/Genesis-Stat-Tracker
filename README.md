@@ -17,7 +17,7 @@
 - Turn autroll off
 - Run Genesis Stat Tracker to start
 - Ctrl + C on the terminal window opened to stop.
-- Please note tha this is not the most accurate stat tracker as it uses ocr.
+- Please note that this is not the most accurate stat tracker as it uses ocr.
 - A dedicated graphics card is highly reccomended
 
 - My specs (Runs this very smoothly, I think you can run this with less though):
