@@ -1,25 +1,31 @@
 import requests
-def send_stats(username, aura_name, roll_chance):
-    data = {
-        "username" : "Genesis Stats Tracker"
-    }
-  
-    data["embeds"] = [
-        {
-            "description" : "1 in " + roll_chance + "\n\nTime Discovered\n<t:" + str(int(datetime.datetime.now().timestamp())) + ":f>",
-            "author" : {
-                "name": username
-            },
-            "title": username + " has found " + aura_name
-        }
-    ]
 
-    try:
-        result = requests.post(webhook_url, json = data)
-        result.raise_for_status()
-    except requests.exceptions.HTTPError as err:
-        print(err)
-    except:
-        print("send error")
-    else:
-        pass
+# Replace with your webhook URL
+webhook_url = "https://discord.com/api/webhooks/1310067262249762926/Nehjc4FvdD8ceRSe1Nk90JP9v4ql4miJhIqF_YVCL4AOXDIcZQSI8R-GUE_5vvdFoCwD"
+
+# List of embeds to send in one request
+embeds = [
+    {
+        "title": "Message 1",
+        "description": "Hello, Discord!"
+    },
+    {
+        "title": "Message 2",
+        "description": "This is message number 2"
+    },
+    {
+        "title": "Message 3",
+        "description": "And here's message number 3"
+    }
+]
+
+# Send all embeds in a single request
+data = {
+    "embeds": embeds
+}
+
+response = requests.post(webhook_url, json=data)
+if response.status_code == 204:
+    print("All messages sent successfully!")
+else:
+    print(f"Failed to send messages, Response: {response.status_code}")

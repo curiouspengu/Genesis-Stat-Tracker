@@ -41,12 +41,14 @@ def parse(result):
     except:
         print("fail")
 
+
+embeds = []
+
+
 def send_stats(username, aura_name, roll_chance):
-    data = {
-        "username" : "Genesis Stats Tracker"
-    }
-  
-    data["embeds"] = [
+    embed_limit = 10
+    global embeds
+    embeds.append(
         {
             "description" : "1 in " + roll_chance + "\n\nTime Discovered\n<t:" + str(int(datetime.datetime.now().timestamp())) + ":f>",
             "author" : {
@@ -54,17 +56,25 @@ def send_stats(username, aura_name, roll_chance):
             },
             "title": username + " has found " + aura_name
         }
-    ]
+    )
+    if len(embeds) >= embed_limit:
+        # Send all embeds in a single request
+        data = {
+            "username" : "Genesis Stats Tracker",
+            "embeds": embeds
+        }
 
-    try:
-        result = requests.post(webhook_url, json = data)
-        result.raise_for_status()
-    except requests.exceptions.HTTPError as err:
-        print(err)
-    except:
-        print("send error")
-    else:
-        pass
+
+        try:
+            result = requests.post(webhook_url, json = data)
+            result.raise_for_status()
+        except requests.exceptions.HTTPError as err:
+            print(err)
+        except:
+            print("send error")
+        else:
+            pass
+        embeds.clear()
 
 def start():
     global main_process

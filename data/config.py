@@ -1,7 +1,6 @@
 import sys
 sys.dont_write_bytecode = True
-webhook_url = "https://discord.com/api/webhooks/1310067262249762926/Nehjc4FvdD8ceRSe1Nk90JP9v4ql4miJhIqF_YVCL4AOXDIcZQSI8R-GUE_5vvdFoCwD"
-
+webhook_url = ""
 globals = [
 {
     "name": "Chromatic: Genesis",
