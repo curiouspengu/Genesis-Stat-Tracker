@@ -27,12 +27,11 @@
 
 # Radiant Team
 ### Owners
-- Curious Pengu (Founder of Genesis Stat Tracker) (Pathing Development, Radiance Macro Development)
-- steveonly1 (Radiance Macro Development)
-- noteab (dSIM Development)
+- Curious Pengu (Founder of Genesis Stat Tracker) | Pathing Development, Radiance Macro Development
+- steveonly1 | Radiance Macro Development
+- noteab | dSIM Development
 ### Developers
-- TheEndyy (Roll detection)
-- Niko (Pathing)
+- TheEndyy | Roll detection
 - bored man
 ### Graphical Designer
 - Cate
