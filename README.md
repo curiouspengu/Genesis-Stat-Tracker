@@ -25,4 +25,14 @@
 - i5-10300H
 - 16 gb RAM
 
+# Radiant Team
+### Owners
+- Curious Pengu (Founder of Genesis Stat Tracker) (Pathing Development, Radiance Macro Development)
+- steveonly1 (Radiance Macro Development)
+- noteab (dSIM Development)
+### Developers
+- TheEndyy (Roll detection)
+- Niko (Pathing)
+- bored man
+
 Genesis Stat Tracker © 2024 by Radiant Team is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
