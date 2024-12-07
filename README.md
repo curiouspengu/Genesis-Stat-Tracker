@@ -27,7 +27,7 @@
 
 # Radiant Team
 ### Owners
-- **Curious Pengu** (Founder of Genesis Stat Tracker) | _Pathing Development, Radiance Macro Development_
+- **Curious Pengu** (Founder of Genesis Stat Tracker) | _Pathing Development, Radiance Macro Development, Lunaria Pathing System_
 - **steveonly1** | _Radiance Macro Development_
 - **noteab** | _dSIM Development_
 ### Developers
