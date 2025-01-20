@@ -27,10 +27,10 @@
 
 # Radiant Team
 ### Owners
-- **Curious Pengu** (Founder of Genesis Stat Tracker) | _Pathing Development, Radiance Macro Development, Lunaria Pathing System_
+- **Curious Pengu** (Founder of Genesis Stat Tracker) | _Pathing Development, Radiance Macro Development, Lunaria Pathing System, Overture AutoJoin, Singularity Link Sniper, ADSLS_
 ### Developers
 - **ManasAarohi** | _Pathing_
 ### Graphical Designer
 - **Cate**
 
-Genesis Stat Tracker © 2024 by Radiant Team is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
+Genesis Stat Tracker © 2025 by Radiant Team is licensed under Creative Commons Attribution-ShareAlike 4.0 International 
